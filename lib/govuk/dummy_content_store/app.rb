@@ -1,5 +1,6 @@
 require 'pathname'
 require 'json'
+require 'govuk/dummy_content_store'
 
 module Govuk
   module DummyContentStore

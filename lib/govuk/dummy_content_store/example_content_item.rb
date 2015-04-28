@@ -1,3 +1,5 @@
+require 'govuk/dummy_content_store'
+
 module Govuk
   module DummyContentStore
     class ExampleContentItem
@@ -16,7 +18,7 @@ module Govuk
       end
 
       def raw_data
-        File.read(path)
+        File.read(path, encoding: "UTF-8")
       end
     end
   end
