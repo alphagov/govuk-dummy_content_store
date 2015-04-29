@@ -1,4 +1,19 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
 require "rack"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename(__FILE__)} [<path/to/govuk-content-schemas>]"
+
+  opts.on_tail("-h", "-?", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+if ARGV.size == 1
+  ENV['GOVUK_CONTENT_SCHEMAS_PATH'] = ARGV.first
+end
+
 Rack::Server.start(config: File.dirname(__FILE__) + "/../config.ru")
