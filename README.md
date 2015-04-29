@@ -18,7 +18,7 @@ Start the server using:
 
 By default it will look for the schemas:
 
-  1. at the path specified by the `EXAMPLES_PATH` environment variable
+  1. at the path specified by the `GOVUK_CONTENT_SCHEMAS_PATH` environment variable
   2. in the current directory
   3. at the path specified in the first argument
 

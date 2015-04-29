@@ -9,10 +9,10 @@ RSpec.describe "Dummy content store rack application" do
   let(:example_file_body) { File.read(example_file_path, encoding: "UTF-8") }
 
   around(:each) do |example|
-    old_env = ENV['EXAMPLES_PATH']
-    ENV['EXAMPLES_PATH'] = schemas_path
+    old_env = ENV['GOVUK_CONTENT_SCHEMAS_PATH']
+    ENV['GOVUK_CONTENT_SCHEMAS_PATH'] = schemas_path
     example.run
-    ENV['EXAMPLES_PATH'] = old_env
+    ENV['GOVUK_CONTENT_SCHEMAS_PATH'] = old_env
   end
 
   let(:app) {
