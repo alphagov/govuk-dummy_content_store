@@ -1,3 +1,4 @@
+require 'pathname'
 require 'govuk/dummy_content_store'
 
 module Govuk

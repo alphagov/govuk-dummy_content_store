@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Dummy content store: examples list</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="assets/styles.css">
+    </head>
+    <body>
+      <h1>Dummy content store: examples list</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Filename</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% examples.each do |example| %>
+            <tr>
+              <td><%= h(example.format) %></a></td>
+              <td><%= h(example.filename) %></a></td>
+              <td><a href="<%= h(example.view_url) %>"><%= h(example.title) %></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </body>
+</html>
+

@@ -9,8 +9,24 @@ module Govuk
         @path = path
       end
 
+      def filename
+        File.basename(path)
+      end
+
       def base_path
         data["base_path"]
+      end
+
+      def format
+        data["format"]
+      end
+
+      def title
+        data["title"]
+      end
+
+      def view_url
+        "/content#{base_path}"
       end
 
       def data

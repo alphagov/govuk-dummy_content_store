@@ -1,4 +1,5 @@
 require 'rack/test'
+require 'nokogiri'
 
 RSpec.describe "Dummy content store rack application" do
   include Rack::Test::Methods
@@ -35,6 +36,33 @@ RSpec.describe "Dummy content store rack application" do
       get "/api/content#{example_file_base_path}"
       expect(last_response).to be_ok
       expect(last_response.body).to eq(example_file_body)
+    end
+  end
+
+  describe "index page" do
+    before(:each) { get "/" }
+
+    it "responds with 200 OK" do
+      expect(last_response).to be_ok
+    end
+
+    it "has content-type text/html charset utf8" do
+      expect(last_response.headers['content-type']).to eq('text/html; charset=utf-8')
+    end
+
+    it "contains a list of all the examples" do
+      doc = Nokogiri::HTML(last_response.body)
+
+      bullets = doc.css('table tr td a').map { |elem| elem.content }
+
+      expect(bullets).to eq(["Get Britain Building: Carlisle Park"])
+    end
+  end
+
+  describe "css" do
+    it "serves css" do
+      get "/assets/styles.css"
+      expect(last_response).to be_ok
     end
   end
 end
