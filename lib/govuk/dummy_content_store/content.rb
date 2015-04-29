@@ -4,7 +4,7 @@ require 'govuk/dummy_content_store'
 
 module Govuk
   module DummyContentStore
-    class App
+    class Content
       attr_reader :formats_path
 
       def initialize(formats_path)

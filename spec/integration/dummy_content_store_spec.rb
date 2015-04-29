@@ -1,4 +1,3 @@
-require 'govuk/dummy_content_store/app'
 require 'rack/test'
 
 RSpec.describe "Dummy content store rack application" do
