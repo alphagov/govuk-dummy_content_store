@@ -1,11 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 
-realpath() {
-    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
-}
-
-SCRIPT_PATH="`realpath "$0"`"
-BIN_DIR=`dirname "${SCRIPT_PATH}"`
-DUMMY_CONTENT_STORE_DIR=`dirname "${BIN_DIR}"`
-
-rackup "${DUMMY_CONTENT_STORE_DIR}"/config.ru -p 3068
+require "rack"
+Rack::Server.start(config: File.dirname(__FILE__) + "/../config.ru")
