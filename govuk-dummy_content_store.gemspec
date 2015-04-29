@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["david.heath@digital.cabinet-office.gov.uk"]
   spec.summary       = %q{Rack app which serves example files from govuk-content-schemas}
   spec.description   = %q{}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alphagov/govuk-dummy_content_store"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
