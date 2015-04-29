@@ -5,23 +5,19 @@ require 'govuk/dummy_content_store'
 module Govuk
   module DummyContentStore
     class Content
-      attr_reader :formats_path
+      attr_reader :repository
 
-      def initialize(formats_path)
-        @formats_path = Pathname.new(formats_path)
+      def initialize(repository)
+        @repository = repository
       end
 
       def call(env)
-        example = find_example(env["PATH_INFO"])
+        example = repository.find_by_base_path(env["PATH_INFO"])
         if example
           present_example(example)
         else
           present_not_found
         end
-      end
-
-      def find_example(url_path)
-        all_examples.find { |e| e.base_path == url_path }
       end
 
     private
@@ -43,14 +39,6 @@ module Govuk
           'Cache-control' => 'no-cache'
         }
         [404, headers, [body]]
-      end
-
-      def all_example_paths
-        Dir[formats_path + "**" + "examples" + "*.json"]
-      end
-
-      def all_examples
-        all_example_paths.lazy.map { |path| ExampleContentItem.new(path) }
       end
     end
   end
