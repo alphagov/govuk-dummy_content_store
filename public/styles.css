@@ -1,2 +1,27 @@
-table tbody tr:nth-child(odd)   { background-color:#eee; }
-table tbody tr:nth-child(even)    { background-color:#fff; }
+body {
+  margin: 0 auto;
+  padding: 0 1em 3em;
+  max-width: 80em;
+  color: #111;
+  background: #fff;
+  font: medium 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: .75em 1.2em;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
