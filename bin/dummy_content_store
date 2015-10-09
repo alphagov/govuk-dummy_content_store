@@ -16,4 +16,4 @@ if ARGV.size == 1
   ENV['GOVUK_CONTENT_SCHEMAS_PATH'] = ARGV.first
 end
 
-Rack::Server.start(config: File.dirname(__FILE__) + "/../config.ru")
+Rack::Server.start(config: File.dirname(__FILE__) + "/../config.ru", Port: ENV['PORT'] || 3068)
