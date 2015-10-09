@@ -16,11 +16,19 @@ Start the server using:
 
     $ dummy_content_store
 
-By default it will look for the schemas:
+It will look for the schema files in the following locations:
 
   1. at the path specified by the `GOVUK_CONTENT_SCHEMAS_PATH` environment variable
   2. in the current directory
   3. at the path specified in the first argument
+
+## Configuration
+
+By default the dummy content store runs on port 3068 which is the same port as
+content store. If you want run it on a different port you can configure it
+using the `PORT` environment variable:
+
+    $ PORT=9999 dummy_content_store
 
 ## Contributing
 

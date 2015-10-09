@@ -1,4 +1,3 @@
-#\ -p 3068
 $LOAD_PATH << File.dirname(__FILE__) + "/lib"
 require 'govuk/dummy_content_store'
 
