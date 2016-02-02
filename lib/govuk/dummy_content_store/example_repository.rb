@@ -20,7 +20,7 @@ module Govuk
 
     private
       def all_example_paths
-        Dir[content_schemas_path + "formats" + "**" + "examples" + "*.json"]
+        Dir[content_schemas_path + "formats" + "*" + "frontend" + "examples" + "*.json"]
       end
     end
   end
