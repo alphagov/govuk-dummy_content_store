@@ -65,4 +65,28 @@ RSpec.describe "Dummy content store rack application" do
       expect(last_response).to be_ok
     end
   end
+
+  
+  context "a fallback url is set" do
+    before(:each) { ENV['DUMMY_CONTENT_STORE_FALLBACK_URL'] = "https://www.gov.uk/api/content" }
+    
+    it "serves the live content if the example is not available" do
+      live_file_base_path = "/available"
+      live_content_body = "stubbed response"
+    
+      get "/api/content#{live_file_base_path}"
+      expect(last_response).to be_ok
+      expect(last_response.body).to eq(live_content_body)
+    end
+
+    it "responds not found if both live and example are not available" do
+      live_file_base_path = "/not-available"
+      not_found_body = "Not found"
+      
+      get "/api/content#{live_file_base_path}"
+      expect(last_response).not_to be_ok
+      expect(last_response.status).to eq(404)
+      expect(last_response.body).to eq(not_found_body)
+    end
+  end
 end
