@@ -10,6 +10,13 @@ OptionParser.new do |opts|
     puts opts
     exit
   end
+
+  opts.on('-u', '--url URL', "Fallback URL for non available examples") do |url|
+    # e.g. https://www.gov.uk/api/content
+    ENV["DUMMY_CONTENT_STORE_FALLBACK_URL"] = url
+    puts "fallback URL = #{url}"
+  end
+
 end.parse!
 
 if ARGV.size == 1
