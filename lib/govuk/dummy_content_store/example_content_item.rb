@@ -17,8 +17,8 @@ module Govuk
         data["base_path"]
       end
 
-      def format
-        data["format"]
+      def schema_name
+        data["schema_name"]
       end
 
       def title
