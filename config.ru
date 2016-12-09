@@ -26,5 +26,3 @@ end
 map '/api/content' do
   run Govuk::DummyContentStore::Content.new(repository, live_repository)
 end
-
-
