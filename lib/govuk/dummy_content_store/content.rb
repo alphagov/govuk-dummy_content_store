@@ -2,15 +2,21 @@ require 'pathname'
 require 'json'
 require 'govuk/dummy_content_store'
 require 'net/http'
+require 'govuk_schemas'
+
+ # needed for govuk_schemas, can be removed after that gem is updated
+require 'securerandom'
 
 module Govuk
   module DummyContentStore
     class Content
       attr_reader :repository
       attr_reader :live_repository
+      attr_reader :random_repository
 
-      def initialize(repository, live_repository = nil)
+      def initialize(repository, random_repository, live_repository = nil)
         @repository = repository
+        @random_repository = random_repository
         @live_repository = live_repository
       end
 
@@ -18,6 +24,9 @@ module Govuk
         example = repository.find_by_base_path(env["PATH_INFO"])
         if example
           present_example(example)
+        elsif env["PATH_INFO"].start_with?("/random")
+          random_example_json = random_repository.generate(env["PATH_INFO"].split('/').last)
+          present_live(random_example_json)
         elsif live_repository && res = live_repository.find_by_base_path(env["PATH_INFO"])
           present_live(res.body)
         else

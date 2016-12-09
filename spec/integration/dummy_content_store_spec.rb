@@ -66,6 +66,15 @@ RSpec.describe "Dummy content store rack application" do
     end
   end
 
+  describe "random content" do
+    it "serves a random example" do
+      get "/api/content/random/my-format"
+
+      expect(last_response).to be_ok
+      expect(JSON.parse(last_response.body)).to be_a(Hash)
+    end
+  end
+
   context "a fallback url is set" do
     before(:each) { ENV['DUMMY_CONTENT_STORE_FALLBACK_URL'] = "https://www.gov.uk/api/content" }
 
