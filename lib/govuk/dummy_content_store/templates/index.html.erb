@@ -15,7 +15,7 @@
       <table>
         <thead>
           <tr>
-            <th>Format</th>
+            <th>Schema</th>
             <th>Filename</th>
             <th>Title</th>
           </tr>
@@ -24,7 +24,7 @@
         <tbody>
           <% examples.each do |example| %>
             <tr>
-              <td><%= h(example.format) %></a></td>
+              <td><%= h(example.schema_name) %></a></td>
               <td><%= h(example.filename) %></a></td>
               <td><a href="<%= h(example.view_url) %>"><%= h(example.title) %></a></td>
             </tr>
@@ -34,4 +34,3 @@
 
     </body>
 </html>
-
