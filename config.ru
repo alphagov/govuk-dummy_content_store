@@ -6,6 +6,7 @@ govuk_live_content_path = ENV['DUMMY_CONTENT_STORE_FALLBACK_URL']
 
 repository = Govuk::DummyContentStore::ExampleRepository.new(govuk_content_schemas_path)
 live_repository = Govuk::DummyContentStore::LiveRepository.new(govuk_live_content_path) if govuk_live_content_path
+random_repository = Govuk::DummyContentStore::RandomRepository.new
 
 map '/' do
   run Govuk::DummyContentStore::Index.new(repository)
@@ -21,10 +22,8 @@ end
 
 # Serve examples
 map '/content' do
-  run Govuk::DummyContentStore::Content.new(repository, live_repository)
+  run Govuk::DummyContentStore::Content.new(repository, random_repository, live_repository)
 end
 map '/api/content' do
-  run Govuk::DummyContentStore::Content.new(repository, live_repository)
+  run Govuk::DummyContentStore::Content.new(repository, random_repository, live_repository)
 end
-
-
